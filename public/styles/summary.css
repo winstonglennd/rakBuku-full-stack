@@ -1,0 +1,67 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Make the body fill the entire viewport height */
+    margin: 0;
+    background-color: #F8F0E5;
+}
+
+.back-button {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    width: 80px;
+    height: 20px;
+    background-color: black;
+    border-radius: 8px;
+    padding: 3px;
+    margin-left: 50px;
+}
+
+.summary-page-container {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.summary-book-title {
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.summary-book-author {
+    display: flex;
+    justify-content: center;
+    color: rgb(81, 77, 77);
+    margin-top: 0;
+    font-size: 3rem;
+}
+
+.summary-by {
+    font-size: 2rem;
+    margin: 0 20px;
+    margin-bottom: 20px;
+}
+
+.summary {
+    display: flex;
+    background-color: #102C57;
+    border-radius: 20px;
+    color: white;
+    overflow-wrap: break-word; /* Wrap normal words */
+    /* word-break: break-all; Break long words */
+    font-size: 20px;
+    padding: 50px;
+    margin: 0 20px;
+}

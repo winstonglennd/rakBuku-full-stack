@@ -1,0 +1,119 @@
+<%- include('partials/header.ejs'); -%>
+
+    <div class="add-new-overlay hidden">
+        <div class="add-new-container hidden">
+            <button type="button" class="close-btn">X</button>
+            <h2 class="add-new-book-form-title">Add New Book</h2>
+            <form id="new-book-form" action="/add-new-book" method="POST">
+                <div class="book-title-input-container input-container">
+                    <label for="book_title_input">Book Title:</label>
+                    <input type="text" id="book_title_input" name="book_title_input" required>
+                </div>
+                <div class="author-input-container input-container">
+                    <label for="author_input">Author:</label>
+                    <input type="text" id="author_input" name="author_input" required>
+                </div>
+                <div class="isbn-input-container input-container">
+                    <label for="isbn_input">ISBN:</label>
+                    <input type="text" id="isbn_input" name="isbn_input" required>
+                    <button type="button" id="search-isbn-button">Search ISBN</button>
+                    <span id="isbn-validation"></span>
+                </div>
+                <div class="book-rating-container input-container">
+                    <label for="book_rating">Rating:</label>
+                    <input type="number" step="0.1" id="book_rating" name="book_rating" min="1" max="5" required>
+                </div>
+                <div class="genre-container input-container">
+                    <label for="select_genre">Genre:</label>
+                    <select name="select_genre" id="select_genre" required>
+                        <option value="">Choose Genre</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="non-fiction">Non-Fiction</option>
+                    </select>
+                </div>
+                <div class="year-container input-container">
+                    <label for="book_publish_year">Publish Year</label>
+                    <input type="number" id="book_publish_year" name="book_publish_year" required>
+                </div>
+                <div class="summary-container input-container">
+                    <label for="summary">Summary:</label>
+                    <textarea name="summary" id="summary" cols="30" rows="10" required></textarea>
+                </div>
+                <button type="submit" class="add-book-btn">Add Book</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="whole-container">
+        <div class="left-container">
+            <div class="filter-btn" id="filter-btn">
+                <div class="filter-content-container hidden">
+                    <p class="filter-heading">Filter By</p>
+                    <hr>
+                    <div class="filter-links-container">
+                        <a href="/filter-title" id="filter-title">Title</a>
+                        <a href="/filter-latest" id="filter-latest">Latest</a>
+                        <a href="/filter-genre" id="filter-genre">Genre</a>
+                        <a href="/filter-rating" id="filter-rating">Top Rating</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="middle-container">
+
+            <h2 class="welcome-text">Welcome Back <%= currentUser.user_name %>!</h2>
+
+            <div class="book-container">
+                <% reads.forEach(read=> {%>
+                    <div class="book-display">
+                        <div class="book-cover-photo"
+                            style="background-image: url('data:<%= read.content_type %>;base64,<%= read.image_data %>');">
+                        </div>
+                        <div class="book-info">
+                            <div class="book-headings">
+                                <p class="book-title">
+                                    <%= read.title%>
+                                </p>
+                                <p class="author">
+                                    <%= read.author %>
+                                </p>
+                            </div>
+                            <div class="book-stats">
+                                <p class="date-read">Date Read: <%= read.date_read %>
+                                </p>
+                                <p class="rating">Rating: <%= read.rating %>
+                                </p>
+                                <p class="genre">Genre: <%= read.genre %>
+                                </p>
+                                <p class="isbn">ISBN: <%= read.isbn %>
+                                </p>
+                                <div class="buttons">
+                                    <form action="/summary" method="post">
+                                        <input type="hidden" name="user_id" value="<%= currentUser.user_id %>">
+                                        <input type="hidden" name="book_id" value="<%= read.book_id %>">
+                                        <button type="submit" class="read-summary-btn">Read Summary</button>
+                                    </form>
+                                    <form action="/edit?book_id=<%= read.book_id %>&user_id=<%= currentUser.user_id %>"
+                                        method="post">
+                                        <button type="submit" class="edit-book-btn btn">Edit Book Details</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+
+        <div class="right-container">
+            <div class="add-new-btn">Add Book</div>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+    <script src="navbar.js"></script>
+    <script src="app.js"></script>

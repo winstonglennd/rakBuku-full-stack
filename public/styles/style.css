@@ -1,0 +1,384 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+textarea {
+    resize: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.whole-container {
+    display: flex;
+    padding-top: 5vh;
+    max-width: 100vw;
+}
+
+.left-container{
+    display: flex;
+    width: 25vw;
+    padding-left: 3vw;
+}
+
+.filter-btn{
+    height: 40px;
+    width: 40px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    background-image: url(../images/filter.png);
+    background-size: 28px 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.filter-btn:hover {
+    cursor: pointer;
+}
+
+.filter-content-container.hidden {
+    height: 0;
+    transition: height 0.5s ease;
+}
+
+.filter-content-container {
+    position: absolute;
+    bottom: -375px;
+    height: 363px;
+    width: 20vw;
+    background-color:#D9D9D9;
+    border-radius: 15px;
+    transition: height 0.5s ease;
+}
+
+
+
+.filter-heading {
+    text-align: center;
+}
+
+.filter-content-container p, .filter-content-container a {
+    margin: 20px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.filter-links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filter-links-container > a:hover {
+    cursor: pointer;
+}
+
+.middle-container {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.welcome-text {
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 0;
+    text-align: center;
+}
+
+.right-container {
+    display: flex;
+    width: 25vw;
+    justify-content: flex-end;
+    padding-right: 3vw;
+}
+
+.add-new-btn {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0 3px;
+    width: 11vw;
+    height: 55px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.add-new-btn:hover {
+    cursor: pointer;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+}
+
+.book-display {
+    display: flex;
+    min-width: 50vw;
+    background-color: #102C57;
+    border-radius: 22.5px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 0;
+}
+
+.book-cover-photo {
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    border: 1.5px solid white;
+    border-radius: 22.5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.book-info {
+    width: 50%;
+    min-height: auto;   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.book-info p {
+    margin: 0;
+}
+
+.book-title {
+    font-size: 18px;
+    font-weight: 500;   
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.author {
+    margin-bottom: 100px;
+    font-size: 15px;
+    font-weight: lighter;
+    color: white;
+}
+
+.book-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    width: 100%;
+    height: 60%;
+    background-color: #D9D9D9;
+    font-size: 14px;
+    border-radius: 7.5px;
+}
+
+.book-stats p, .read-summary-btn{
+    margin-left: 20px;
+}
+
+.read-summary-btn, .btn {
+    border: none;    
+    color: white;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    background-color: #102C57;
+    border-radius: 7.5px;
+}
+
+.btn {
+    margin-right: 20px;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.add-new-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.add-new-container {
+    position: fixed;
+    width: 80vw;
+    max-height: 90vh;
+    background-color: white;
+    border-radius: 21px;
+    overflow: auto;
+    z-index: 99999;
+}
+
+.add-new-container::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-new-book-form-title {
+    display: flex;
+    justify-content: center;
+}
+
+#new-book-form {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    gap: 10px;
+}
+
+label {
+    display: block;
+}
+
+.input-container {
+    width: 100%;
+}
+
+.add-new-book-form-title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#new-book-form input,
+#new-book-form select{
+    width: 100%;
+    height: 20px; /* Set the height for all input and select elements */
+}
+
+#new-book-form textarea {
+    width: 100%;
+    height: 120px;
+}
+
+#new-book-form select {
+    height: 30px !important;
+    width: 102%; /* Set explicit height */
+}   
+
+.isbn-input-container input {
+    width: 50% !important;
+}
+
+.isbn-input-container {
+    position: relative;
+}
+
+#isbn-validation {
+    position: absolute;
+    margin-left: 10px;
+}
+
+.add-book-btn, #search-isbn-button  {
+    width: auto;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.add-book-btn {
+    margin-bottom: 10px;
+}
+
+#search-isbn-button {
+    height: 25px;
+    border-radius: 5px;
+}
+
+.close-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    margin-bottom: 0;
+}
+
+.back-button {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    width: 80px;
+    height: 20px;
+    background-color: black;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+.initial-welcome-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+#new-user-label {
+    margin-top: 20px;
+}
+
+#submit-add-user-btn {
+    height: 30px;
+    width: 80px;
+}
+
+#newUserInput {
+    height: 30px;
+}
+
+.user-input-form {
+    padding: 20px;
+    padding-top: 10px;
+}
+
+@media (max-width: 680px) {
+    .book-display {
+        min-width: 90vw;
+
+    }
+
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+
+    .filter-content-container {
+        min-width: 50vw;
+    }
+     
+}

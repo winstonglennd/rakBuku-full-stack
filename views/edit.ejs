@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="./styles/edit.css">
+
+<div class="add-new-container">
+    <h2 class="edit-book-form-title">Edit Book</h2>
+    <form id="edit-book-form" action="/save-changes" method="POST">
+        <div class="book-title-input-container input-container">
+            <label for="book_title_input">Book Title:</label>
+            <input type="text" id="book_title_input" name="book_title_input" value="<%= book_data.book_title %>"
+                required>
+        </div>
+        <div class="author-input-container input-container">
+            <label for="author_input">Author:</label>
+            <input type="text" id="author_input" name="author_input" value="<%= book_data.book_author %>" required>
+        </div>
+        <div class="book-rating-container input-container">
+            <label for="book_rating">Rating:</label>
+            <input type="number" step="0.1" id="book_rating" name="book_rating" min="1" max="5"
+                value="<%= book_rating %>" required>
+        </div>
+        <div class="genre-container input-container">
+            <label for="select_genre">Genre:</label>
+            <select name="select_genre" id="select_genre" required>
+                <option value="">Choose Genre</option>
+                <option value="fiction" <% if(book_data.book_genre==='fiction' ) { %> selected <% } %> >Fiction</option>
+                <option value="non-fiction" <% if(book_data.book_genre==='non-fiction' ) { %> selected <% } %>
+                        >Non-Fiction</option>
+            </select>
+        </div>
+        <div class="year-container input-container">
+            <label for="book_publish_year">Publish Year</label>
+            <input type="number" id="book_publish_year" name="book_publish_year" value="<%= book_data.publish_year %>"
+                required>
+        </div>
+        <div class="summary-container input-container">
+            <label for="summary">Summary:</label>
+            <textarea name="summary" id="summary" cols="30" rows="10" required><%= summary %></textarea>
+        </div>
+        <input type="hidden" name="book_id" value="<%= book_data.book_id %>">
+        <div class="cancel-save-btn">
+            <button type="submit" class="save-changes-btn">Save Changes</button>
+            <button type="button" onclick="goBack()" class="redirect-btn">Cancel</button>
+        </div>
+    </form>
+
+    <form action="/delete-post?book_id=<%= book_data.book_id %>" method="post" id="delete-post-form">
+        <button type="submit" class="delete-book-list-btn">
+            <p class="delete-book-msg">Delete Book</p>
+            <div class="trash-icon"></div>
+        </button>
+    </form>
+</div>
+
+<script src="app.js"></script>
